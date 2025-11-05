@@ -5,6 +5,17 @@ h2 {text-align:center; color:#68d0fd; margin-bottom:16px; font-size:1.3em;}
 .switch-label {margin-left:12px;font-weight:600;}
 .toggle-row input[type="checkbox"]{transform:scale(0.95);width:18px;height:18px;margin-right:8px}
 .switch-label{font-size:0.92rem;color:#cfeff6}
+
+/* Modern toggle switch */
+.switch{display:inline-block;position:relative;width:44px;height:24px;margin-right:10px}
+.switch input{opacity:0;width:0;height:0;margin:0}
+.switch .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.12);border-radius:34px;transition:all .18s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+.switch .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:all .18s ease;box-shadow:0 3px 8px rgba(2,8,10,0.25)}
+.switch input:checked + .slider{background:linear-gradient(90deg,#00c7b7,#36b5f0)}
+.switch input:checked + .slider:before{transform:translateX(20px);background:#ffffff}
+.switch-label.small{font-size:0.88rem;color:#cfeff6;margin-left:8px}
+
+@media (max-width:450px){.toggle-row{gap:8px}}
 table{width:100%;border-collapse:collapse;}
 th, td{padding:7px 4px;font-size:1em;}
 th{color:#4ed3ad; font-weight:700;}

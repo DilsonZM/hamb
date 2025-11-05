@@ -16,8 +16,11 @@
     </div>
     <h2>CALCULADORA DE NÓMINA</h2>
     <div class="toggle-row">
-      <input type="checkbox" id="switchMenos30">
-      <label for="switchMenos30" class="switch-label">¿Trabajaste menos de 30 días?</label>
+      <label class="switch" for="switchMenos30">
+        <input type="checkbox" id="switchMenos30">
+        <span class="slider" aria-hidden="true"></span>
+      </label>
+      <label for="switchMenos30" class="switch-label small">¿Trabajaste menos de 30 días?</label>
     </div>
     <form id="formNomina">
       <table>
