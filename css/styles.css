@@ -1,10 +1,10 @@
-body { font-family: 'Montserrat', Arial, sans-serif; background: #23292f; color: #ecf0f1; margin:0; padding:28px 0;}
-.container { width: min(410px, 92%); margin:18px auto; background: #292e36; border-radius: 14px; box-shadow:0 10px 30px rgba(0,0,0,0.55); padding:22px 16px; max-width:410px }
-h2 {text-align:center; color:#68d0fd; margin-bottom:16px; font-size:1.3em;}
+body { font-family: 'Montserrat', Arial, sans-serif; background: linear-gradient(180deg,#eef3ff 0%, #f9fbff 100%); color: #1f2d3a; margin:0; padding:24px 0;}
+.container { width: min(410px, 92%); margin:18px auto; background: #ffffff; border-radius: 18px; box-shadow:0 10px 30px rgba(16, 38, 87, 0.10); padding:22px 16px; max-width:410px }
+h2 {text-align:center; color:#2a81ff; margin-bottom:16px; font-size:1.28em;}
 .toggle-row {display:flex;align-items:center;margin-bottom:9px;}
 .switch-label {margin-left:12px;font-weight:600;}
 .toggle-row input[type="checkbox"]{transform:scale(0.95);width:18px;height:18px;margin-right:8px}
-.switch-label{font-size:0.92rem;color:#cfeff6}
+.switch-label{font-size:0.92rem;color:#556b8b}
 
 /* Modern toggle switch */
 .switch{display:inline-block;position:relative;width:44px;height:24px;margin-right:10px}
@@ -19,12 +19,12 @@ h2 {text-align:center; color:#68d0fd; margin-bottom:16px; font-size:1.3em;}
 table{width:100%;border-collapse:collapse;}
 .th, td{padding:7px 4px;font-size:1em;}
 th{color:#4ed3ad; font-weight:700;}
-td input[type="number"]{width:120px;padding:6px;border-radius:6px;background:#21252a;color:#fff;border:1px solid #444;font-size:1em;}
+td input[type="number"]{width:100%;max-width:220px;padding:8px;border-radius:10px;background:#ffffff;color:#1f2d3a;border:1px solid rgba(41,58,91,0.20);font-size:1em;box-shadow:0 2px 6px rgba(16,38,87,0.06)}
 .diasmini{width:40px;}
 .results{margin-top:18px;}
-.result-card{background:#0b2a31; color:#9eead0; font-weight:600; padding:10px 12px;border-radius:10px;margin-bottom:10px;box-shadow:0 6px 18px rgba(3,10,14,0.45)}
-.result-label{color:#7be7ff;}
-.result-card.neto{background:linear-gradient(90deg,#e6fff0,#c8ffd6);color:#084b28;font-weight:800}
+.result-card{background:#f6f8ff; color:#1f2d3a; font-weight:600; padding:12px 14px;border-radius:14px;margin-bottom:10px;box-shadow:0 4px 12px rgba(16,38,87,0.08);border:1px solid rgba(41,58,91,0.10)}
+.result-label{color:#2a81ff;}
+.result-card.neto{background:linear-gradient(90deg,#e6fff0,#c8ffd6);color:#084b28;font-weight:800;border:1px solid rgba(8,75,40,0.10)}
 /* Align labels and numeric values inside result cards */
 .result-card{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .result-card .result-label{flex:1}
@@ -32,10 +32,10 @@ td input[type="number"]{width:120px;padding:6px;border-radius:6px;background:#21
 .result-card .float-right{min-width:64px;text-align:right;display:inline-block}
 .btn{display:inline-block;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;border:none;text-decoration:none;text-align:center;transition:all .15s ease;margin-top:10px}
 .btn:active{transform:translateY(1px)}
-.btn-primary{background:linear-gradient(90deg,#36b5f0,#5de0b0);color:#072026;border:0;box-shadow:0 8px 18px rgba(10,40,50,0.25)}
+.btn-primary{background:linear-gradient(90deg,#2a81ff,#7c5cff);color:#ffffff;border:0;box-shadow:0 8px 18px rgba(42,129,255,0.25)}
 .btn-primary:hover{filter:brightness(.95);box-shadow:0 10px 22px rgba(10,40,50,0.28)}
-.btn-secondary{background:transparent;color:#cdeef3;border:1px solid rgba(206,239,246,0.12);box-shadow:none}
-.btn-secondary:hover{background:rgba(255,255,255,0.04)}
+.btn-secondary{background:#ffffff;color:#2b3a55;border:1px solid rgba(41,58,91,0.18);box-shadow:0 2px 6px rgba(16,38,87,0.06)}
+.btn-secondary:hover{background:#f7f9ff}
 .boleta{margin-top:18px;background:linear-gradient(180deg,#f6fbfb 0%, #e9f9f7 100%);border-radius:12px;padding:16px 18px; box-shadow:0 10px 30px rgba(3,10,14,0.20); color:#0b2530}
 .boleta h3{color:#136fa3; font-size:1.05em; margin-bottom:10px;}
 .boleta table{width:100%;border-collapse:separate;border-spacing:0 8px;background:transparent}
@@ -63,7 +63,9 @@ td input[type="number"]{width:120px;padding:6px;border-radius:6px;background:#21
 }
 /* En móviles: permitir que '30 días' baje a una segunda línea para ahorrar ancho */
 @media (max-width:460px){
-  .result-card .float-right{min-width:0;display:block;text-align:right;margin-top:2px}
+	.result-card{flex-wrap:wrap;align-items:flex-start}
+	.result-card .value{order:2}
+	.result-card .float-right{order:3;min-width:0;display:block;text-align:right;margin-top:2px;width:100%;white-space:normal}
 }
 /* En móviles, ocultar la tabla y mostrar lista tipo cards */
 @media (max-width:460px){
@@ -74,18 +76,18 @@ td input[type="number"]{width:120px;padding:6px;border-radius:6px;background:#21
 .hidden{display:none!important;}
 #colDias{text-align:center;}
 .float-right{float:right}
-.fr-blue{color:#1b7fb3}
+.fr-blue{color:#2a81ff}
 .text-right{text-align:right}
 .text-left{text-align:left}
 .neto-badge{color:#084b28;background:#e9fae9;padding:6px 8px;border-radius:6px;display:inline-block}
 /* Deductions styling: subtle background and left accent */
 .deductions{margin-top:8px}
-.deductions .result-card{background:linear-gradient(90deg,#071f20,#052728);color:#aef2df;border-left:4px solid rgba(0,183,160,0.95);padding:10px 12px;border-radius:8px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,0.18);position:relative;z-index:0}
-.deductions .result-card .result-label{color:#7ee9d4;font-weight:700}
+.deductions .result-card{background:#f3fbff;color:#145b5b;border-left:4px solid rgba(0,183,160,0.6);padding:10px 12px;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(16,38,87,0.06);position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
+.deductions .result-card .result-label{color:#0c8f8f;font-weight:700}
 
 /* TOTAL DEDUCCIONES: destacar pero coherente con deductions */
-.deduction-total{background:linear-gradient(90deg,rgba(0,120,110,0.06),rgba(0,160,140,0.03));color:#e9fff9;border-left:4px solid rgba(0,150,130,0.9);padding:10px 12px;border-radius:8px;margin-top:8px;margin-bottom:12px;box-shadow:0 4px 8px rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0}
-.deduction-total .label{font-size:0.92rem;color:#054c45;letter-spacing:0.6px}
+.deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.06),rgba(0,199,183,0.03));color:#0b2530;border-left:4px solid rgba(0,199,183,0.6);padding:10px 12px;border-radius:12px;margin-top:8px;margin-bottom:12px;box-shadow:0 4px 8px rgba(16,38,87,0.06);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
+.deduction-total .label{font-size:0.92rem;color:#0a6f6a;letter-spacing:0.6px}
 .deduction-total .amount{font-size:1.02rem;font-weight:900;color:#005f52}
 
 /* Boleta: fila especial para total deducciones */
