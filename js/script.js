@@ -14,6 +14,15 @@ function fechaActual(){
   const f = new Date();
   return `${f.getDate().toString().padStart(2,'0')}/${(f.getMonth()+1).toString().padStart(2,'0')}/${f.getFullYear()}`;
 }
+// Toggle mostrar/ocultar Bauche Detallado
+const baucheSwitch = document.getElementById('switchBauche');
+if (baucheSwitch){
+  baucheSwitch.addEventListener('change',()=>{
+    const show = baucheSwitch.checked;
+    document.getElementById('boletaResumen').classList.toggle('hidden', !show);
+  });
+}
+
 document.getElementById('formNomina').addEventListener('submit',function(e){
   e.preventDefault();
   let salario=Number(document.getElementById('salario').value);
@@ -85,7 +94,9 @@ document.getElementById('formNomina').addEventListener('submit',function(e){
       <div class="result-card neto"><span class="result-label">NETO A PAGAR:</span><span class="value">${formatea(neto)}</span></div>
     </div>`;
   document.getElementById('detalleBoleta').innerHTML=detalleHTML + detalleMobileHTML;
-  document.getElementById('boletaResumen').classList.remove('hidden');
+  // Mostrar la boleta sólo si el usuario lo desea
+  const showBauche = baucheSwitch ? baucheSwitch.checked : true;
+  document.getElementById('boletaResumen').classList.toggle('hidden', !showBauche);
   document.getElementById('btnPDF').classList.remove('hidden');
   // No pedir ni mostrar firma (se removió por requerimiento)
   document.getElementById('firmaBoleta').innerHTML='';

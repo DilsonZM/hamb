@@ -36,14 +36,14 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 .btn-primary:hover{filter:brightness(.95);box-shadow:0 10px 22px rgba(10,40,50,0.28)}
 .btn-secondary{background:transparent;color:#cdeef3;border:1px solid rgba(206,239,246,0.12);box-shadow:none}
 .btn-secondary:hover{background:rgba(255,255,255,0.04)}
-.boleta{margin-top:18px;background:linear-gradient(180deg,#eef7f5 0%, #dff3ef 100%);border-radius:12px;padding:14px 14px; box-shadow:0 8px 20px rgba(3,10,14,0.28); color:#073734}
-.boleta h3{color:#0f6f6a; font-size:1.03em; margin-bottom:10px;}
+.boleta{margin-top:18px;background:linear-gradient(180deg,#f6fbfb 0%, #e9f9f7 100%);border-radius:12px;padding:16px 18px; box-shadow:0 10px 30px rgba(3,10,14,0.20); color:#0b2530}
+.boleta h3{color:#136fa3; font-size:1.05em; margin-bottom:10px;}
 .boleta table{width:100%;border-collapse:separate;border-spacing:0 8px;background:transparent}
 .boleta .boleta-table{display:block}
 .boleta .mobile-list{display:none}
 .boleta .section-title{color:#0a6f5e;font-weight:800;font-size:0.95rem;margin:6px 2px}
 .boleta td, .boleta th{font-size:0.96em;padding:8px 10px;font-variant-numeric:tabular-nums}
-.boleta .metric{color:#0a6f5e;font-weight:800;font-size:0.98em}
+.boleta .metric{color:#0b8f52;font-weight:800;font-size:0.98em}
 .firma{margin-top:14px;color:#2b2b66;font-weight:700}
 .fecha{color:#516671; float:right; font-size:0.92em; margin-top:6px}
 .logo-sim{display:flex;align-items:center;gap:10px;background:transparent;color:inherit;padding:0;margin-bottom:12px}
@@ -91,7 +91,13 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 .boleta tr.deduction-total .total-amount{color:#064f48}
 
 /* Boleta: marcar filas de deducciones — solo acento izquierdo, sin fondo adicional */
-.boleta tr.deduction td{background:transparent;color:#033f38;padding:8px;border-radius:0;font-weight:700;border-left:3px solid rgba(0,119,102,0.22)}
+.boleta tr.deduction td{background:transparent;color:#0b2530;padding:8px 10px;border-radius:0;font-weight:700;border-left:3px solid rgba(0,119,102,0.18)}
+
+/* Mobile list inside boleta should feel like the light panel, not dark cards */
+.boleta .mobile-list .result-card{background:rgba(6,42,51,0.06);color:#0b2530;border:1px solid rgba(0,0,0,0.05);box-shadow:none;padding:10px 12px}
+.boleta .mobile-list .result-card.metric{background:rgba(11,143,82,0.08);border-left:4px solid rgba(11,143,82,0.25)}
+.boleta .mobile-list .deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.06),rgba(0,199,183,0.03));color:#0b2530;border-left:4px solid rgba(0,199,183,0.6);box-shadow:none}
+.boleta .mobile-list .result-card.neto{background:linear-gradient(90deg,#e6fff0,#c8ffd6);color:#084b28}
 
 /* Prevent the row backgrounds from creating oversized pills on very small widths */
 .boleta tr.deduction td:first-child{border-top-left-radius:6px;border-bottom-left-radius:6px}
