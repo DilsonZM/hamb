@@ -114,8 +114,11 @@ function setNumericInputValue(target,value,limit=30){
 
 function initTheme(){
   const themeToggle=document.getElementById('themeToggle');
-  let theme='light';
-  try{ theme = localStorage.getItem('theme')||'light'; }catch(e){ theme='light'; }
+  let theme='dark';
+  try{
+    const stored=localStorage.getItem('theme');
+    if(stored){ theme=stored; }
+  }catch(e){ theme='dark'; }
   applyTheme(theme);
   if(themeToggle){
     themeToggle.addEventListener('click',()=>{
