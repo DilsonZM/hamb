@@ -43,6 +43,13 @@ Novedades recientes
 - Interruptor para mostrar/ocultar la sección de horas extra y recargos, manteniendo la UI limpia cuando no hay novedades.
 - Bloque de configuración adicional colapsable para mantener la interfaz principal enfocada en los datos básicos.
 - Los días trabajados se recalculan automáticamente restando vacaciones e incapacidades y se muestran alertas cuando los rangos de fechas se cruzan.
+- Manifest y service worker incluidos para poder instalar la app desde navegadores compatibles (PWA).
+
+## Instalación como app (PWA)
+
+1. Abre https://dilsonzm.github.io/hamb/ desde un navegador compatible (Chrome, Edge, Firefox Android, Safari iOS 16.4+).
+2. Usa la opción **Agregar a la pantalla principal** / **Instalar app** que ofrece el navegador.
+3. La aplicación se instalará con modo standalone y tema oscuro predeterminado.
 
 Cómo desactivar el logo en el PDF
 

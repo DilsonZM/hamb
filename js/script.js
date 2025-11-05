@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   autoUpdateWorkedDays();
   bindPersistence();
   updateWarnings();
+  initServiceWorker();
   const form=document.getElementById('formNomina');
   if(form){ form.addEventListener('submit',handleSubmit); }
   const btnPDF=document.getElementById('btnPDF');
@@ -179,6 +180,15 @@ function shouldAutoOpenAdvanced(){
   }
   if(getNumber('comisionesMonto')>0){ return true; }
   return extrasEntries.some(entry=>Number(entry.horas)>0);
+}
+
+function initServiceWorker(){
+  if(!('serviceWorker' in navigator)) return;
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{
+      /* swallow errors silently; PWA is optional */
+    });
+  });
 }
 
 function ensureAdvancedVisibleIfNeeded(){

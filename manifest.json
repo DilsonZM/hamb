@@ -1,0 +1,25 @@
+{
+  "name": "Nómina HAMB",
+  "short_name": "Nómina",
+  "description": "Calculadora de nómina con configuración avanzada de vacaciones, incapacidades y extras.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1218",
+  "theme_color": "#0f1218",
+  "lang": "es-CO",
+  "icons": [
+    {
+      "src": "img/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
