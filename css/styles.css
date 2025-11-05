@@ -1,6 +1,6 @@
 body { font-family: 'Montserrat', Arial, sans-serif; background: linear-gradient(180deg,#eef3ff 0%, #f9fbff 100%); color: #1f2d3a; margin:0; padding:24px 0;}
 .container { width: min(410px, 92%); margin:18px auto; background: #ffffff; border-radius: 18px; box-shadow:0 10px 30px rgba(16, 38, 87, 0.10); padding:22px 16px; max-width:410px }
-h2 {text-align:center; color:#2a81ff; margin-bottom:16px; font-size:1.28em;}
+h2 {color:#2a81ff; margin:0; font-size:1.2em;}
 .toggle-row {display:flex;align-items:center;margin-bottom:9px;}
 .switch-label {margin-left:12px;font-weight:600;}
 .toggle-row input[type="checkbox"]{transform:scale(0.95);width:18px;height:18px;margin-right:8px}
@@ -9,13 +9,25 @@ h2 {text-align:center; color:#2a81ff; margin-bottom:16px; font-size:1.28em;}
 /* Modern toggle switch */
 .switch{display:inline-block;position:relative;width:44px;height:24px;margin-right:10px}
 .switch input{opacity:0;width:0;height:0;margin:0}
-.switch .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.12);border-radius:34px;transition:all .18s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+.switch .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#e9eef7;border-radius:34px;transition:all .18s ease;box-shadow:inset 0 1px 0 rgba(16,38,87,0.06)}
 .switch .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:all .18s ease;box-shadow:0 3px 8px rgba(2,8,10,0.25)}
 .switch input:checked + .slider{background:linear-gradient(90deg,#00c7b7,#36b5f0)}
 .switch input:checked + .slider:before{transform:translateX(20px);background:#ffffff}
 .switch-label.small{font-size:0.88rem;color:#cfeff6;margin-left:8px}
 
 @media (max-width:450px){.toggle-row{gap:8px}}
+/* Header */
+.app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.app-header .header-left{display:flex;align-items:center;gap:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2a81ff,#7c5cff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.welcome{font-size:0.78rem;color:#7685a2;margin-bottom:2px}
+.icon-btn{background:#ffffff;border:1px solid rgba(41,58,91,0.12);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#2a81ff;box-shadow:0 2px 6px rgba(16,38,87,0.06);cursor:pointer}
+.icon-btn .icon-moon{display:none}
+body.theme-dark .icon-btn{background:#23292f;border-color:#3a465a;color:#ffd36b}
+body.theme-dark .icon-btn .icon-sun{display:none}
+body.theme-dark .icon-btn .icon-moon{display:block}
+body:not(.theme-dark) .icon-btn .icon-sun{display:block}
+body:not(.theme-dark) .icon-btn .icon-moon{display:none}
 table{width:100%;border-collapse:collapse;}
 .th, td{padding:7px 4px;font-size:1em;}
 th{color:#4ed3ad; font-weight:700;}
@@ -24,7 +36,13 @@ td input[type="number"]{width:100%;max-width:220px;padding:8px;border-radius:10p
 .results{margin-top:18px;}
 .result-card{background:#f6f8ff; color:#1f2d3a; font-weight:600; padding:12px 14px;border-radius:14px;margin-bottom:10px;box-shadow:0 4px 12px rgba(16,38,87,0.08);border:1px solid rgba(41,58,91,0.10)}
 .result-label{color:#2a81ff;}
-.result-card.neto{background:linear-gradient(90deg,#e6fff0,#c8ffd6);color:#084b28;font-weight:800;border:1px solid rgba(8,75,40,0.10)}
+.result-card.neto{background:linear-gradient(135deg,#d3ffe6,#b6ffd2);color:#064d2a;font-weight:900;border:1px solid rgba(8,75,40,0.12);box-shadow:0 8px 20px rgba(8,75,40,0.18)}
+.result-card.neto .value{font-size:1.2rem}
+
+/* Sections for ingresos/egresos */
+.section-heading{font-size:0.82rem;color:#7a8aad;font-weight:800;margin:14px 2px 8px}
+.incomes-wrap .result-card{background:#f7fbff}
+.deductions-wrap .result-card{background:#f3fbff}
 /* Align labels and numeric values inside result cards */
 .result-card{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .result-card .result-label{flex:1}
@@ -70,18 +88,28 @@ td input[type="number"]{width:100%;max-width:220px;padding:8px;border-radius:10p
 
 /* Config panel (sidebar-style) */
 .config-panel{background:#ffffff;border:1px solid rgba(41,58,91,0.10);border-radius:14px;padding:10px 12px;margin:12px 0;box-shadow:0 4px 12px rgba(16,38,87,0.06)}
-.segmented{display:flex;gap:8px;background:#f3f6ff;border:1px solid rgba(41,58,91,0.10);padding:4px;border-radius:12px;margin-bottom:8px}
-.segmented-btn{flex:1 1 0;background:transparent;border:0;padding:8px 10px;border-radius:10px;font-weight:700;color:#2b3a55;cursor:pointer}
-.segmented-btn.active{background:#ffffff;box-shadow:0 2px 6px rgba(16,38,87,0.06);color:#2a81ff}
+/* segmented removed: now theme uses icon button */
 
 /* Dark theme overrides */
 body.theme-dark{background:#23292f;color:#ecf0f1}
 body.theme-dark .container{background:#292e36;box-shadow:0 10px 30px rgba(0,0,0,0.55)}
+body.theme-dark .config-panel{background:#2b313a;border-color:#3a465a;box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+body.theme-dark .switch .slider{background:rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
 body.theme-dark .result-card{background:#0b2a31;color:#9eead0;border-color:transparent;box-shadow:0 6px 18px rgba(3,10,14,0.45)}
 body.theme-dark .result-label{color:#7be7ff}
 body.theme-dark .btn-secondary{background:transparent;color:#cdeef3;border:1px solid rgba(206,239,246,0.12);box-shadow:none}
 body.theme-dark .btn-secondary:hover{background:rgba(255,255,255,0.04)}
 body.theme-dark .switch-label{color:#cfeff6}
+
+/* Diferenciar claramente ingresos vs deducciones */
+.incomes-wrap .result-card{background:linear-gradient(180deg,#f3f8ff, #eef4ff);border-left:4px solid rgba(42,129,255,0.45)}
+.deductions-wrap .result-card{background:linear-gradient(180deg,#eefcf9, #e7fbf6);border-left:4px solid rgba(0,183,160,0.45)}
+body.theme-dark .incomes-wrap .result-card{background:#0f2236;border-left-color:rgba(42,129,255,0.55)}
+body.theme-dark .deductions-wrap .result-card{background:#0b2a2a;border-left-color:rgba(0,183,160,0.6)}
+
+/* Hacer el total de ingresos visualmente distinto al total de deducciones */
+.incomes-wrap .result-card.metric{background:linear-gradient(90deg,#ebf3ff,#e3eeff);border-left-color:rgba(42,129,255,0.6)}
+.deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.08),rgba(0,199,183,0.04));}
 /* En móviles, ocultar la tabla y mostrar lista tipo cards */
 @media (max-width:460px){
 	.boleta .boleta-table{display:none}
