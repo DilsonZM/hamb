@@ -30,6 +30,49 @@ function fechaActual(){
 }
 // Se removió el Bauche Detallado del DOM; mantenemos solo los resultados y PDF
 
+// Persist inputs in localStorage
+const fields = ['salario','bono1','bono2','seguro','diasSalario','diasBono1','diasBono2'];
+function saveState(){
+  const data = {};
+  fields.forEach(id=>{ const el=document.getElementById(id); if(el) data[id]=el.value; });
+  data.menos30 = document.getElementById('switchMenos30').checked ? '1':'0';
+  try{ localStorage.setItem('nominaState', JSON.stringify(data)); }catch(e){}
+}
+function loadState(){
+  try{
+    const raw = localStorage.getItem('nominaState');
+    if(!raw) return;
+    const data = JSON.parse(raw);
+    fields.forEach(id=>{ if(data[id]!==undefined && document.getElementById(id)) document.getElementById(id).value=data[id]; });
+    if(data.menos30!==undefined){
+      const sw=document.getElementById('switchMenos30');
+      sw.checked = data.menos30==='1';
+      sw.dispatchEvent(new Event('change'));
+    }
+  }catch(e){}
+}
+window.addEventListener('DOMContentLoaded',loadState);
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',saveState));
+
+// Theme toggle button
+const themeToggle = document.getElementById('themeToggle');
+function setTheme(theme){
+  document.body.classList.toggle('theme-dark', theme==='dark');
+  try{ localStorage.setItem('theme', theme);}catch(e){}
+}
+function initTheme(){
+  let theme='light';
+  try{ theme = localStorage.getItem('theme')||'light'; }catch(e){}
+  setTheme(theme);
+}
+initTheme();
+if(themeToggle){
+  themeToggle.addEventListener('click',()=>{
+    const next = document.body.classList.contains('theme-dark')? 'light':'dark';
+    setTheme(next);
+  });
+}
+
 document.getElementById('formNomina').addEventListener('submit',function(e){
   e.preventDefault();
   let salario=Number(document.getElementById('salario').value);
@@ -54,14 +97,18 @@ document.getElementById('formNomina').addEventListener('submit',function(e){
   let neto=Math.round(totalIngresos-totalDeducciones);
 
   document.getElementById('results').innerHTML=
-    `<div class="result-card"><span class="result-label">Salario:</span><span class="value">${formatea(salarioProp)}</span><span class="float-right fr-blue">${diasSalario} días</span></div>
-     <div class="result-card"><span class="result-label">Extralegal:</span><span class="value">${formatea(bono1Prop)}</span><span class="float-right fr-blue">${diasBono1} días</span></div>
-     <div class="result-card"><span class="result-label">Alimentación:</span><span class="value">${formatea(bono2Prop)}</span><span class="float-right fr-blue">${diasBono2} días</span></div>
-     <div class="result-card metric"><span class="result-label">TOTAL INGRESOS:</span><span class="value">${formatea(totalIngresos)}</span></div>
-     <div class="deductions">
-       <div class="result-card"><span class="result-label">Salud (4%):</span><span class="value">${formatea(salud)}</span></div>
-       <div class="result-card"><span class="result-label">Pensión (4%):</span><span class="value">${formatea(pension)}</span></div>
-       <div class="result-card"><span class="result-label">Seguro olivos:</span><span class="value">${formatea(seguro)}</span></div>
+    `<div class="section-heading">INGRESOS</div>
+     <div class="incomes-wrap">
+       <div class="result-card"><span class="result-label">💼 Salario:</span><span class="value">${formatea(salarioProp)}</span><span class="float-right fr-blue">${diasSalario} días</span></div>
+       <div class="result-card"><span class="result-label">🎁 Extralegal:</span><span class="value">${formatea(bono1Prop)}</span><span class="float-right fr-blue">${diasBono1} días</span></div>
+       <div class="result-card"><span class="result-label">🍽️ Alimentación:</span><span class="value">${formatea(bono2Prop)}</span><span class="float-right fr-blue">${diasBono2} días</span></div>
+       <div class="result-card metric"><span class="result-label">TOTAL INGRESOS:</span><span class="value">${formatea(totalIngresos)}</span></div>
+     </div>
+     <div class="section-heading">DEDUCCIONES</div>
+     <div class="deductions-wrap">
+       <div class="result-card"><span class="result-label">🏥 Salud (4%):</span><span class="value">${formatea(salud)}</span></div>
+       <div class="result-card"><span class="result-label">🏦 Pensión (4%):</span><span class="value">${formatea(pension)}</span></div>
+       <div class="result-card"><span class="result-label">🛡️ Seguro olivos:</span><span class="value">${formatea(seguro)}</span></div>
      </div>
      <div class="result-card deduction-total"><span class="label">TOTAL DEDUCCIONES</span><span class="amount">${formatea(totalDeducciones)}</span></div>
      <div class="result-card neto"><span class="result-label">NETO a recibir:</span><span class="value">${formatea(neto)}</span></div>`;

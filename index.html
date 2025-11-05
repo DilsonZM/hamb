@@ -11,16 +11,21 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo-sim">
-      <img src="img/Logo.png" alt="Logo" class="logo-img">
-    </div>
-    <h2>CALCULADORA DE NÓMINA</h2>
-    <!-- Panel de configuración estilo sidebar -->
-    <div class="config-panel">
-      <div class="segmented theme-switch" role="tablist" aria-label="Tema">
-        <button type="button" class="segmented-btn active" data-theme="light" aria-selected="true">Claro</button>
-        <button type="button" class="segmented-btn" data-theme="dark" aria-selected="false">Oscuro</button>
+    <header class="app-header">
+      <div class="header-left">
+        <div class="avatar">H</div>
+        <div class="titles">
+          <div class="welcome">Hola, bienvenido</div>
+          <h2>Calculadora de Nómina</h2>
+        </div>
       </div>
+      <button type="button" id="themeToggle" class="icon-btn" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zm10.48 14.32l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM12 4V1h-0v3h0zm0 19v-3h0v3h0zm8-11h3v0h-3v0zm-19 0h3v0H1v0zm15.24-6.16l1.8-1.79-1.79-1.79-1.79 1.79 1.78 1.79zM4.84 17.24l-1.79 1.79 1.79 1.79 1.79-1.79-1.79-1.79zM12 6a6 6 0 100 12 6 6 0 000-12z"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </header>
+    <!-- Panel de configuración -->
+    <div class="config-panel">
       <div class="toggle-row">
         <label class="switch" for="switchMenos30">
           <input type="checkbox" id="switchMenos30">
