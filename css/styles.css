@@ -36,11 +36,11 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 .btn-primary:hover{filter:brightness(.95);box-shadow:0 10px 22px rgba(10,40,50,0.28)}
 .btn-secondary{background:transparent;color:#cdeef3;border:1px solid rgba(206,239,246,0.12);box-shadow:none}
 .btn-secondary:hover{background:rgba(255,255,255,0.04)}
-.boleta{margin-top:18px;background:linear-gradient(180deg,#f6fbfb 0%, #e9f9f7 100%);border-radius:12px;padding:16px 18px; box-shadow:0 10px 30px rgba(3,10,14,0.45); color:#0b2530}
-.boleta h3{color:#136fa3; font-size:1.05em; margin-bottom:10px;}
-.boleta table{width:100%;border-collapse:collapse;background:transparent}
-.boleta td, .boleta th{font-size:0.98em;padding:6px 8px;font-variant-numeric:tabular-nums}
-.boleta .metric{color:#0b8f52;font-weight:800;font-size:0.98em}
+.boleta{margin-top:18px;background:linear-gradient(180deg,#eef7f5 0%, #dff3ef 100%);border-radius:12px;padding:14px 14px; box-shadow:0 8px 20px rgba(3,10,14,0.28); color:#073734}
+.boleta h3{color:#0f6f6a; font-size:1.03em; margin-bottom:10px;}
+.boleta table{width:100%;border-collapse:separate;border-spacing:0 8px;background:transparent}
+.boleta td, .boleta th{font-size:0.96em;padding:8px 10px;font-variant-numeric:tabular-nums}
+.boleta .metric{color:#0a6f5e;font-weight:800;font-size:0.98em}
 .firma{margin-top:14px;color:#2b2b66;font-weight:700}
 .fecha{color:#516671; float:right; font-size:0.92em; margin-top:6px}
 .logo-sim{display:flex;align-items:center;gap:10px;background:transparent;color:inherit;padding:0;margin-bottom:12px}
@@ -68,13 +68,13 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 .neto-badge{color:#084b28;background:#e9fae9;padding:6px 8px;border-radius:6px;display:inline-block}
 /* Deductions styling: subtle background and left accent */
 .deductions{margin-top:8px}
-.deductions .result-card{background:linear-gradient(90deg,rgba(3,10,14,0.04),rgba(255,255,255,0.01));color:#065a50;border-left:4px solid #00c7b7;padding:10px 12px;border-radius:8px;margin-bottom:10px;box-shadow:0 4px 10px rgba(3,10,14,0.12);position:relative;z-index:0}
-.deductions .result-card .result-label{color:#0b8f7e;font-weight:700}
+.deductions .result-card{background:linear-gradient(90deg,#071f20,#052728);color:#aef2df;border-left:4px solid rgba(0,183,160,0.95);padding:10px 12px;border-radius:8px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,0.18);position:relative;z-index:0}
+.deductions .result-card .result-label{color:#7ee9d4;font-weight:700}
 
 /* TOTAL DEDUCCIONES: destacar pero coherente con deductions */
-.deduction-total{background:linear-gradient(90deg,rgba(2,128,128,0.06),rgba(0,199,183,0.03));color:#eafffb;border-left:4px solid rgba(0,199,183,0.9);padding:10px 14px;border-radius:10px;margin-top:8px;margin-bottom:12px;box-shadow:0 6px 12px rgba(2,40,40,0.12);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0}
-.deduction-total .label{font-size:0.92rem;color:#0b6b63;letter-spacing:0.6px}
-.deduction-total .amount{font-size:1.05rem;font-weight:900;color:#007a66}
+.deduction-total{background:linear-gradient(90deg,rgba(0,120,110,0.06),rgba(0,160,140,0.03));color:#e9fff9;border-left:4px solid rgba(0,150,130,0.9);padding:10px 12px;border-radius:8px;margin-top:8px;margin-bottom:12px;box-shadow:0 4px 8px rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0}
+.deduction-total .label{font-size:0.92rem;color:#054c45;letter-spacing:0.6px}
+.deduction-total .amount{font-size:1.02rem;font-weight:900;color:#005f52}
 
 /* Boleta: fila especial para total deducciones */
 .boleta tr.deduction-total th,.boleta tr.deduction-total td{background:transparent;color:#0b3940;padding:8px;border-radius:4px;border-top:1px solid rgba(0,199,183,0.06)}
@@ -83,7 +83,17 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 .boleta tr.deduction-total .total-amount{color:#064f48}
 
 /* Boleta: marcar filas de deducciones con fondo sutil */
-.boleta tr.deduction td{background:linear-gradient(90deg,rgba(0,199,183,0.10),rgba(0,199,183,0.06));color:#053e37;padding:10px;border-radius:6px;font-weight:700;border-left:3px solid rgba(0,199,183,0.12)}
+.boleta tr.deduction td{background:linear-gradient(90deg,rgba(0,119,102,0.12),rgba(0,119,102,0.04));color:#033f38;padding:10px;border-radius:6px;font-weight:700;border-left:3px solid rgba(0,119,102,0.14)}
+
+/* Prevent the row backgrounds from creating oversized pills on very small widths */
+.boleta tr.deduction td:first-child{border-top-left-radius:6px;border-bottom-left-radius:6px}
+.boleta tr.deduction td:last-child{border-top-right-radius:6px;border-bottom-right-radius:6px}
+
+/* Slightly tighten total-deducciones row visuals */
+.boleta tr.deduction-total th,.boleta tr.deduction-total td{background:transparent;color:#073734;padding:8px;border-radius:4px;border-top:1px solid rgba(0,150,130,0.06)}
+.boleta tr.deduction-total th{font-weight:700;font-size:0.95rem;color:#0a6f5e}
+.boleta tr.deduction-total td{font-weight:900;font-size:1.02rem;color:#044f46}
+.boleta tr.deduction-total .total-amount{color:#044f46}
 
 /* Slightly smaller checkbox label on very small screens */
 @media (max-width:360px){
