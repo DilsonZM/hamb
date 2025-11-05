@@ -13,7 +13,7 @@
   <div class="container">
     <header class="app-header">
       <div class="header-left">
-        <img src="img/hambings-logo.svg" class="brand-logo" alt="Hambings" />
+  <img src="img/Logo.png" class="brand-logo" alt="Hambings" />
         <div class="titles">
           <div class="welcome">Hola, bienvenido</div>
           <h2>Calculadora de Nómina</h2>
@@ -43,22 +43,32 @@
         </tr>
         <tr>
           <td>Salario Básico</td>
-          <td><input type="number" id="salario" value="2800000"></td>
+          <td><input type="number" id="salario" value="0" min="0"></td>
           <td><input type="number" id="diasSalario" class="diasmini hidden" min="0" max="30" value="30"></td>
         </tr>
         <tr>
           <td>Bono Extralegal</td>
-          <td><input type="number" id="bono1" value="1400000"></td>
+          <td><input type="number" id="bono1" value="0" min="0"></td>
           <td><input type="number" id="diasBono1" class="diasmini hidden" min="0" max="30" value="30"></td>
         </tr>
         <tr>
           <td>Bono Alimentación</td>
-          <td><input type="number" id="bono2" value="452000"></td>
+          <td><input type="number" id="bono2" value="0" min="0"></td>
           <td><input type="number" id="diasBono2" class="diasmini hidden" min="0" max="30" value="30"></td>
         </tr>
         <tr>
-          <td>Seguro los olivos</td>
-          <td colspan="2"><input type="number" id="seguro" value="8750"></td>
+          <td>Novedades (reembolsos)</td>
+          <td colspan="2"><input type="number" id="novedades" value="0" min="0" placeholder="0"></td>
+        </tr>
+        <tr>
+          <td>Seguro Los Olivos</td>
+          <td><input type="number" id="seguro" value="0" min="0" disabled></td>
+          <td class="text-right">
+            <label class="switch" for="seguroEnabled">
+              <input type="checkbox" id="seguroEnabled">
+              <span class="slider" aria-hidden="true"></span>
+            </label>
+          </td>
         </tr>
       </table>
   <button type="submit" class="btn btn-primary">Calcular Nómina</button>

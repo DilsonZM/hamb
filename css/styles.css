@@ -1,4 +1,8 @@
-body { font-family: 'Montserrat', Arial, sans-serif; background: linear-gradient(180deg,#eef3ff 0%, #f9fbff 100%); color: #1f2d3a; margin:0; padding:24px 0;}
+/* Light theme base with subtle pastel rose glow */
+body { font-family: 'Montserrat', Arial, sans-serif; background:
+	radial-gradient(1200px 600px at 90% 0%, rgba(255, 99, 132, 0.08), rgba(255,255,255,0) 60%),
+	linear-gradient(180deg,#f7f9ff 0%, #ffffff 100%);
+	color: #1f2d3a; margin:0; padding:24px 0;}
 .container { width: min(410px, 92%); margin:18px auto; background: #ffffff; border-radius: 18px; box-shadow:0 10px 30px rgba(16, 38, 87, 0.10); padding:22px 16px; max-width:410px }
 h2 {color:#2a81ff; margin:0; font-size:1.2em;}
 .toggle-row {display:flex;align-items:center;margin-bottom:9px;}
@@ -44,7 +48,10 @@ td input[type="number"]{width:100%;max-width:220px;padding:8px;border-radius:10p
 /* Sections for ingresos/egresos */
 .section-heading{font-size:0.82rem;color:#7a8aad;font-weight:800;margin:14px 2px 8px}
 .incomes-wrap .result-card{background:#f7fbff}
-.deductions-wrap .result-card{background:#f3fbff}
+/* Deductions in soft red/pink to match the reference */
+.deductions-wrap .result-card{background:linear-gradient(180deg,#fff6f6,#ffefef);border-left:4px solid rgba(244,67,54,0.45);color:#1a1a1a}
+.deductions-wrap .result-card .result-label{color:#111}
+.deductions-wrap .result-card .value{color:#e53935;font-weight:800}
 /* Align labels and numeric values inside result cards */
 .result-card{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .result-card .result-label{flex:1}
@@ -101,6 +108,8 @@ body.theme-dark .app-header h2{color:#ffffff}
 body.theme-dark .config-panel{background:#151a22;border-color:rgba(255,255,255,0.06);box-shadow:0 10px 28px rgba(0,0,0,0.45)}
 body.theme-dark .switch .slider{background:#2a3140;box-shadow:inset 0 1px 0 rgba(0,0,0,0.2)}
 body.theme-dark .switch input:checked + .slider{background:linear-gradient(90deg,#00d1c7,#39b8ff)}
+/* Specific style for the Seguro toggle aligning with red palette in dark mode */
+body.theme-dark td .switch input:checked + .slider{background:linear-gradient(90deg,#ff6b6b,#ff9e9e)}
 body.theme-dark .result-card{background:#1a1f2b;color:#e6eef6;border:1px solid rgba(255,255,255,0.06);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
 body.theme-dark .result-label{color:#dfe6f1}
 body.theme-dark .btn-secondary{background:#1a1f2b;color:#dbe3ef;border:1px solid rgba(255,255,255,0.08);box-shadow:none}
@@ -111,15 +120,23 @@ body.theme-dark .switch-label{color:#c9d1de}
 .incomes-wrap .result-card{background:linear-gradient(180deg,#f3f8ff, #eef4ff);border-left:4px solid rgba(42,129,255,0.45)}
 .deductions-wrap .result-card{background:linear-gradient(180deg,#eefcf9, #e7fbf6);border-left:4px solid rgba(0,183,160,0.45)}
 body.theme-dark .incomes-wrap .result-card{background:#1a2330;border-left-color:#3aa9ff}
-body.theme-dark .deductions-wrap .result-card{background:#162a2a;border-left-color:#2fe0c2}
+/* Dark deductions: reddish cards with soft white/red labels and stronger red numbers */
+body.theme-dark .deductions-wrap .result-card{background:#2a1b1b;border-left-color:#ff6b6b}
+body.theme-dark .deductions-wrap .result-card .result-label{color:#ffdada}
+body.theme-dark .deductions-wrap .result-card .value{color:#ff8a8a;font-weight:800}
 
 /* Emphasized NETO card in dark: gradient pill like the bank card */
 body.theme-dark .result-card.neto{background:linear-gradient(135deg,#58c6b9,#2fb28a);color:#071c14;border:1px solid rgba(255,255,255,0.06);box-shadow:0 12px 30px rgba(0,0,0,0.45)}
 body.theme-dark .result-card.neto .value{color:#052116}
 
 /* Hacer el total de ingresos visualmente distinto al total de deducciones */
-.incomes-wrap .result-card.metric{background:linear-gradient(90deg,#ebf3ff,#e3eeff);border-left-color:rgba(42,129,255,0.6)}
-.deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.08),rgba(0,199,183,0.04));}
+.result-card.metric{position:relative}
+/* Totals with accent line so they stand out */
+.incomes-wrap .result-card.metric{background:#f2f6ff;border-left-color:rgba(42,129,255,0.6)}
+.incomes-wrap .result-card.metric::after{content:"";position:absolute;left:10px;right:10px;top:-1px;height:3px;border-radius:2px;background:linear-gradient(90deg,#2a81ff,rgba(42,129,255,0));}
+/* TOTAL DEDUCCIONES card in soft red with a red line */
+.deduction-total{background:linear-gradient(180deg,#fff6f6,#ffefef);border-left-color:rgba(244,67,54,0.55);}
+.deduction-total::after{content:"";position:absolute;left:10px;right:10px;top:-1px;height:3px;border-radius:2px;background:linear-gradient(90deg,#ff6b6b,rgba(255,107,107,0));}
 /* En móviles, ocultar la tabla y mostrar lista tipo cards */
 @media (max-width:460px){
 	.boleta .boleta-table{display:none}
@@ -135,13 +152,15 @@ body.theme-dark .result-card.neto .value{color:#052116}
 .neto-badge{color:#084b28;background:#e9fae9;padding:6px 8px;border-radius:6px;display:inline-block}
 /* Deductions styling: subtle background and left accent */
 .deductions{margin-top:8px}
-.deductions .result-card{background:#f3fbff;color:#145b5b;border-left:4px solid rgba(0,183,160,0.6);padding:10px 12px;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(16,38,87,0.06);position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
-.deductions .result-card .result-label{color:#0c8f8f;font-weight:700}
+/* Legacy .deductions block (align to red palette too) */
+.deductions .result-card{background:linear-gradient(180deg,#fff6f6,#ffefef);color:#1a1a1a;border-left:4px solid rgba(244,67,54,0.6);padding:10px 12px;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(16,38,87,0.06);position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
+.deductions .result-card .result-label{color:#111;font-weight:700}
+.deductions .result-card .value{color:#e53935;font-weight:800}
 
 /* TOTAL DEDUCCIONES: destacar pero coherente con deductions */
-.deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.06),rgba(0,199,183,0.03));color:#0b2530;border-left:4px solid rgba(0,199,183,0.6);padding:10px 12px;border-radius:12px;margin-top:8px;margin-bottom:12px;box-shadow:0 4px 8px rgba(16,38,87,0.06);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
-.deduction-total .label{font-size:0.92rem;color:#0a6f6a;letter-spacing:0.6px}
-.deduction-total .amount{font-size:1.02rem;font-weight:900;color:#005f52}
+.deduction-total{background:linear-gradient(180deg,#fff6f6,#ffefef);color:#3b1b1b;border-left:4px solid rgba(244,67,54,0.6);padding:10px 12px;border-radius:12px;margin-top:8px;margin-bottom:12px;box-shadow:0 4px 8px rgba(16,38,87,0.06);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:0;border:1px solid rgba(41,58,91,0.10)}
+.deduction-total .label{font-size:0.92rem;color:#b33b3b;letter-spacing:0.6px}
+.deduction-total .amount{font-size:1.02rem;font-weight:900;color:#8e1f1f}
 
 /* Boleta: fila especial para total deducciones */
 .boleta tr.deduction-total th,.boleta tr.deduction-total td{background:transparent;color:#0b3940;padding:8px;border-radius:4px;border-top:1px solid rgba(0,199,183,0.06)}
@@ -155,7 +174,7 @@ body.theme-dark .result-card.neto .value{color:#052116}
 /* Mobile list inside boleta should feel like the light panel, not dark cards */
 .boleta .mobile-list .result-card{background:rgba(6,42,51,0.06);color:#0b2530;border:1px solid rgba(0,0,0,0.05);box-shadow:none;padding:10px 12px}
 .boleta .mobile-list .result-card.metric{background:rgba(11,143,82,0.08);border-left:4px solid rgba(11,143,82,0.25)}
-.boleta .mobile-list .deduction-total{background:linear-gradient(90deg,rgba(0,199,183,0.06),rgba(0,199,183,0.03));color:#0b2530;border-left:4px solid rgba(0,199,183,0.6);box-shadow:none}
+.boleta .mobile-list .deduction-total{background:linear-gradient(180deg,#fff6f6,#ffefef);color:#3b1b1b;border-left:4px solid rgba(244,67,54,0.6);box-shadow:none}
 .boleta .mobile-list .result-card.neto{background:linear-gradient(90deg,#e6fff0,#c8ffd6);color:#084b28}
 
 /* Prevent the row backgrounds from creating oversized pills on very small widths */
