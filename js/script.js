@@ -14,13 +14,17 @@ function fechaActual(){
   const f = new Date();
   return `${f.getDate().toString().padStart(2,'0')}/${(f.getMonth()+1).toString().padStart(2,'0')}/${f.getFullYear()}`;
 }
-// Toggle mostrar/ocultar Bauche Detallado
+// Toggle mostrar/ocultar Bauche Detallado (solo visible si hay contenido)
 const baucheSwitch = document.getElementById('switchBauche');
+function syncBaucheVisibility(){
+  const boleta = document.getElementById('boletaResumen');
+  const detalle = document.getElementById('detalleBoleta');
+  const hasContent = detalle && detalle.innerHTML.trim().length > 0;
+  const show = baucheSwitch ? baucheSwitch.checked : true;
+  boleta.classList.toggle('hidden', !(show && hasContent));
+}
 if (baucheSwitch){
-  baucheSwitch.addEventListener('change',()=>{
-    const show = baucheSwitch.checked;
-    document.getElementById('boletaResumen').classList.toggle('hidden', !show);
-  });
+  baucheSwitch.addEventListener('change', syncBaucheVisibility);
 }
 
 document.getElementById('formNomina').addEventListener('submit',function(e){
@@ -94,9 +98,8 @@ document.getElementById('formNomina').addEventListener('submit',function(e){
       <div class="result-card neto"><span class="result-label">NETO A PAGAR:</span><span class="value">${formatea(neto)}</span></div>
     </div>`;
   document.getElementById('detalleBoleta').innerHTML=detalleHTML + detalleMobileHTML;
-  // Mostrar la boleta sólo si el usuario lo desea
-  const showBauche = baucheSwitch ? baucheSwitch.checked : true;
-  document.getElementById('boletaResumen').classList.toggle('hidden', !showBauche);
+  // Mostrar la boleta sólo si el usuario lo desea y ya hay contenido
+  syncBaucheVisibility();
   document.getElementById('btnPDF').classList.remove('hidden');
   // No pedir ni mostrar firma (se removió por requerimiento)
   document.getElementById('firmaBoleta').innerHTML='';

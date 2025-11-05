@@ -19,7 +19,7 @@ h2 {text-align:center; color:#68d0fd; margin-bottom:16px; font-size:1.3em;}
 table{width:100%;border-collapse:collapse;}
 .th, td{padding:7px 4px;font-size:1em;}
 th{color:#4ed3ad; font-weight:700;}
-td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#21252a;color:#fff;border:1px solid #444;font-size:1em;}
+td input[type="number"]{width:120px;padding:6px;border-radius:6px;background:#21252a;color:#fff;border:1px solid #444;font-size:1em;}
 .diasmini{width:40px;}
 .results{margin-top:18px;}
 .result-card{background:#0b2a31; color:#9eead0; font-weight:600; padding:10px 12px;border-radius:10px;margin-bottom:10px;box-shadow:0 6px 18px rgba(3,10,14,0.45)}
@@ -57,9 +57,13 @@ td input[type="number"]{width:72px;padding:5px;border-radius:4px;background:#212
 /* Extra tightness for very small screens to avoid numeric overflow */
 @media (max-width:400px){
 	.result-card .value{min-width:56px;font-size:0.95rem}
-	.result-card .float-right{min-width:48px}
-	td input[type="number"]{width:56px}
+	.result-card .float-right{min-width:0;display:block;text-align:right;margin-top:2px}
+	td input[type="number"]{width:100px}
 	.diasmini{width:34px}
+}
+/* En móviles: permitir que '30 días' baje a una segunda línea para ahorrar ancho */
+@media (max-width:460px){
+  .result-card .float-right{min-width:0;display:block;text-align:right;margin-top:2px}
 }
 /* En móviles, ocultar la tabla y mostrar lista tipo cards */
 @media (max-width:460px){
