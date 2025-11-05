@@ -597,8 +597,6 @@ function calculatePayroll(){
 
   const basePrestacional=Math.max(0,
     salarioProp +
-    bono1Prop +
-    bono2Prop +
     vacacionesValor +
     incapacidadValor +
     (permisoTipo==='remunerado'?permisoValor:0) +
